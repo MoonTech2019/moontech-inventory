@@ -157,7 +157,7 @@ var items = [], results = null, curItem = null, detEditing = false;
 var editRowId = null, editRowData = {}, newPhoto = null;
 
 function gasGet(cb) {
-  fetch(GAS, {method:'GET', redirect:'follow'})
+  fetch(GAS + '?t=' + Date.now(), {method:'GET', redirect:'follow'})
     .then(function(r){ return r.json(); })
     .then(function(j){ cb(null, j.data||[]); })
     .catch(function(e){ cb(e); });
@@ -167,6 +167,7 @@ function gasPost(body, cb) {
   fetch(GAS, {
     method:'POST',
     redirect:'follow',
+    headers:{'Content-Type':'text/plain'},
     body:JSON.stringify(body)
   })
     .then(function(r){ return r.json(); })
@@ -198,6 +199,7 @@ function uploadPhoto(base64, mimeType, fileName, cb) {
     fetch(GAS, {
       method:'POST',
       redirect:'follow',
+      headers:{'Content-Type':'text/plain'},
       body:JSON.stringify({action:'uploadPhoto', base64:compressed, mimeType:'image/jpeg', fileName:fileName})
     })
       .then(function(r){ return r.json(); })
