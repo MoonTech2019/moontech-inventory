@@ -338,10 +338,10 @@ function renderTable() {
   var table = document.createElement('table'); table.style.cssText = 'width:100%;border-collapse:collapse;font-size:13px';
   var thead = document.createElement('thead');
   var htr = document.createElement('tr'); htr.style.background = '#0f1117';
-  var ths = ['사진','물품번호','품명','규격','입고단가','납품단가','제작회사','납품처','비고','관리'];
+  var ths = ['사진','물품번호','품명','규격','납품처','입고단가','납품단가','제작회사','비고','관리'];
   for(var hi = 0; hi < ths.length; hi++) {
     var th = document.createElement('th');
-    th.style.cssText = 'padding:10px 12px;color:#6b7280;font-weight:600;font-size:11px;white-space:nowrap;text-align:' + ((hi===4||hi===5)?'right':'left');
+    th.style.cssText = 'padding:10px 12px;color:#6b7280;font-weight:600;font-size:11px;white-space:nowrap;text-align:' + ((hi===5||hi===6)?'right':'left');
     th.textContent = ths[hi]; htr.appendChild(th);
   }
   thead.appendChild(htr); table.appendChild(thead);
@@ -388,10 +388,10 @@ function renderTable() {
       addTd('id','#4f8ef7','font-family:monospace;font-size:11px;white-space:nowrap');
       addTd('name','#e8eaf0','font-weight:600;white-space:'+(isE?'normal':'nowrap'));
       addTd('spec','#9ca3af','min-width:90px;font-size:12px');
+      addTd('supplier','#93c5fd','white-space:'+(isE?'normal':'nowrap'));
       addNumTd('purchasePrice','#34d399');
       addNumTd('supplyPrice','#f87171');
       addTd('manufacturer','#c4b5fd','white-space:'+(isE?'normal':'nowrap'));
-      addTd('supplier','#93c5fd','white-space:'+(isE?'normal':'nowrap'));
       addTd('note','#6b7280','min-width:80px;font-size:12px');
       var tdM=document.createElement('td'); tdM.style.cssText='padding:8px 10px;vertical-align:middle;white-space:nowrap';
       var bd=document.createElement('div'); bd.style.cssText='display:flex;gap:4px';
